@@ -1,21 +1,21 @@
-
 class Solution {
     public int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> numMap = new HashMap<>();
+        int n = nums.length;
 
-        Map<Integer, Integer> map = new HashMap<>();
-
-        for (int i = 0; i < nums.length; i++) {
-            map.put(nums[i], i);
+        // Build the hash table
+        for (int i = 0; i < n; i++) {
+            numMap.put(nums[i], i);
         }
 
-        for (int i = 0; i < nums.length; i++) {
+        // Find the complement
+        for (int i = 0; i < n; i++) {
             int complement = target - nums[i];
-
-            if (map.containsKey(complement) && map.get(complement) != i) {
-                return new int[]{i, map.get(complement)};
+            if (numMap.containsKey(complement) && numMap.get(complement) != i) {
+                return new int[]{i, numMap.get(complement)};
             }
         }
 
-        return new int[]{-1, -1};
+        return new int[]{}; // No solution found
     }
 }
